@@ -20,9 +20,13 @@ pipeline {
             steps {
                 script {
                     // Use SonarQube environment for scanning
-                    withSonarQubeEnv('SonarQube') {
-                        def scannerHome = tool name: 'SonarScanner', type: 'ToolType'
-                        sh "${scannerHome}/bin/sonar-scanner"
+                    // withSonarQubeEnv('SonarQube') {
+                    //     def scannerHome = tool name: 'SonarScanner', type: 'ToolType'
+                    //     sh "${scannerHome}/bin/sonar-scanner"
+                    // }
+                    def scannerHome = tool 'SonarScanner';
+                    withSonarQubeEnv() {
+                      sh "${scannerHome}/bin/sonar-scanner"
                     }
                 }
             }
