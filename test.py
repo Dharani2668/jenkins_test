@@ -1,4 +1,4 @@
-from app import Home 
+from app import home 
 
 
 def test_Home():
