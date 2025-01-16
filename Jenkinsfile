@@ -16,22 +16,6 @@ pipeline {
                 url: 'https://github.com/Dharani2668/jenkins_test.git'
             }
         }
-        stage('SonarQube Analysis') {
-            steps {
-                script {
-                    // Use SonarQube environment for scanning
-                    // withSonarQubeEnv('SonarQube') {
-                    //     def scannerHome = tool name: 'SonarScanner', type: 'ToolType'
-                    //     sh "${scannerHome}/bin/sonar-scanner"
-                    // }
-                    def scannerHome = tool 'SonarScanner';
-                    withSonarQubeEnv() {
-                      sh "${scannerHome}/bin/sonar-scanner"
-                    }
-                }
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
                 script {
